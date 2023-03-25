@@ -6,7 +6,7 @@
         @Html.AntiForgeryToken()
     <ul class="nav navbar-nav navbar-right">
 
-        <li><a href="#" class="nav-link">Course I'm Going</a></li>
+        <li><a href="@Url.Action("Attending", "Courses")" class="nav-link">Course I'm Going</a></li>
         <li><a href="#" class="nav-link">Lecture I'm Flowing</a></li>
         <a href="#" class="nav-link">@User.Identity.GetUserName()</a>
         <li><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>

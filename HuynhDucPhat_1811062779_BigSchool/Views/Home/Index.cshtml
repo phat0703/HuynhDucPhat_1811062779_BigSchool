@@ -1,10 +1,10 @@
-﻿@model IEnumerable<HuynhDucPhat_1811062779_BigSchool.Models.Course>
+﻿@model HuynhDucPhat_1811062779_BigSchool.ViewModels.CoursesViewModel
 @{
     ViewBag.Title = "Home Page";
 }
 
 <ul class="course">
-    @foreach (var course in Model)
+    @foreach (var course in Model.UpcommingCourses)
         {
         <li>
             <div class="date">
@@ -18,16 +18,22 @@
             <div class="details" style="margin-left: 20px; position: absolute; top: -5px; left: 70px;">
                 <span class="lecturer">
                     @course.Lecturer.Name
-                    <button style="color: blue;" class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow</button>
+                    @if (Model.ShowAction)
+                    {
+                        <button style="color: blue;" class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow</button>
+                    }
                 </span>
                 <br />
                 <span class="category">
                     @course.Category.Name
-                    <button style="border: red solid 2px;" data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
+                    @if (Model.ShowAction) 
+                    { 
+                        <button style="border: red solid 2px;" data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
+                    }
                 </span>
             </div>
         </li>
-        }
+    }
 </ul>
 @section scripts
 {
@@ -51,9 +57,8 @@
                 var button = $(e.target);
                 $.post("/api/folowings", { followeeId: button.attr("data-user-id") })
                     .done(function () {
-                        button.text("Following")
-                            .removeClass("btn-default")
-                            .addClass("btn-info");
+                        button
+                            .text("Following");
                     })
                     .fail(function () {
                         alert("Something failed 2!");
