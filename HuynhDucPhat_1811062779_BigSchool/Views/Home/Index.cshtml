@@ -6,7 +6,7 @@
 <ul class="course">
     @foreach (var course in Model)
         {
-        <li >
+        <li>
             <div class="date">
                 <div class="month">
                     @course.DateTime.ToString("MM")
@@ -15,14 +15,50 @@
                     @course.DateTime.ToString("dd")
                 </div>
             </div>
-            <div class="details">
+            <div class="details" style="margin-left: 20px; position: absolute; top: -5px; left: 70px;">
                 <span class="lecturer">
                     @course.Lecturer.Name
+                    <button style="color: blue;" class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow</button>
                 </span>
+                <br />
                 <span class="category">
                     @course.Category.Name
+                    <button style="border: red solid 2px;" data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
                 </span>
             </div>
         </li>
         }
 </ul>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-toggle-attendance").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/attendances", { courseId: button.attr("data-course-id") })
+                    .done(function () {
+                        button
+                            .removeClass("btn-default")
+                            .addClass("btn-info")
+                            .text("Going");
+                    })
+                    .fail(function () {
+                        alert("Something failed!");
+                    });
+            });
+
+            $(".js-toggle-follow").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/folowings", { followeeId: button.attr("data-user-id") })
+                    .done(function () {
+                        button.text("Following")
+                            .removeClass("btn-default")
+                            .addClass("btn-info");
+                    })
+                    .fail(function () {
+                        alert("Something failed 2!");
+                    });
+            });
+        });
+    </script>
+}

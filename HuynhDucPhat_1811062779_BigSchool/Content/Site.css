@@ -62,6 +62,12 @@ textarea {
         .course > li .details {
             margin-left: 20px;
             position: absolute;
-            top: 12px;
+            top: 0;
             left: 70px;
         }
+    .course .button-going {
+        position: absolute;
+        top: 32px;
+        left: 88px;
+        border: red solid 2px;
+    }
