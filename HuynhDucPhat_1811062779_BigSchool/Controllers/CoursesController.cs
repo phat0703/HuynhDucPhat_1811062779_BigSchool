@@ -73,6 +73,27 @@ namespace HuynhDucPhat_1811062779_BigSchool.Controllers
             return View(viewModel);
         }
         //
+        /*[Authorize]
+        public ActionResult Following()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var courses = _dbContext.Followings
+                .Where(a => a.FollowerId == userId)
+                .Select(a => a.Course)
+                .Include(l => l.Lecturer)
+                .Include(l => l.Category)
+                .ToList();
+
+            var viewModel = new CoursesViewModel
+            {
+                UpcommingCourses = courses,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+
+            return View(viewModel);
+        }*/
+        //
         [Authorize]
         public ActionResult Mine()
         {

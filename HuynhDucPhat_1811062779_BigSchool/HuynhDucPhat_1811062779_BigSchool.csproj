@@ -179,6 +179,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CoursesController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\FollowingsController.cs" />
@@ -212,6 +213,10 @@
     <Compile Include="Migrations\202303200334327_AddFollowingsTable.cs" />
     <Compile Include="Migrations\202303200334327_AddFollowingsTable.designer.cs">
       <DependentUpon>202303200334327_AddFollowingsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303270208348_AddIsCanceledColumnToCourse.cs" />
+    <Compile Include="Migrations\202303270208348_AddIsCanceledColumnToCourse.designer.cs">
+      <DependentUpon>202303270208348_AddIsCanceledColumnToCourse.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -249,6 +254,12 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootbox.all.js" />
+    <Content Include="Scripts\bootbox.all.min.js" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.locales.js" />
+    <Content Include="Scripts\bootbox.locales.min.js" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -383,6 +394,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303200334327_AddFollowingsTable.resx">
       <DependentUpon>202303200334327_AddFollowingsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303270208348_AddIsCanceledColumnToCourse.resx">
+      <DependentUpon>202303270208348_AddIsCanceledColumnToCourse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
